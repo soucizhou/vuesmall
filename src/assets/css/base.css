@@ -1,0 +1,76 @@
+@import "./normalize.css";
+
+/*:root -> 获取根元素html*/
+/*
+  文字颜色；
+  文字高亮颜色；
+  整体涂上去的颜色，类似导航的背景颜色
+  背景颜色
+  字体
+  行高
+*/
+:root {
+  --color-text: #666;
+  --color-high-text: #ff5777;
+  --color-tint: #ff8198;
+  --color-background: #fff;
+  --font-size: 14px;
+  --line-height: 1.5;
+}
+/*
+  所有的设置为0
+  设置CSS的box-sizing属性值为“border-box”，这样就会把borders和padding全都包含在定义的宽高里面。这就意味着一个带有2px边框的200px的div仍然宽度是200px
+*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  user-select: none; /* 禁止用户鼠标在页面上选中文字/图片等 */
+  -webkit-tap-highlight-color: transparent; /* webkit是苹果浏览器引擎，tap点击，highlight背景高亮，color颜色，颜色用数值调节 */
+  background: var(--color-background);
+  color: var(--color-text);
+  /* rem vw/vh */
+  width: 100vw;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* 
+  清除浮动
+*/
+.clear-fix::after {
+  clear: both;
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+/* 
+设置zoom:1可以在IE6下清除浮动、解决margin导致的重叠等问题。
+通常，当浮动子元素导致父元素塌陷的时候，只要给父元素加上overflow: hidden;来解决，但是对于IE不行，需要触发其hasLayout属性才可以。 
+zoom:1就是IE6 专用的 触发 haslayout 属性的。hasLayout是IE特有的一个属性。很多的IE下的css bug都与其息息相关。
+在IE中，一个元素要么自己对自身的内容进行计算大小和组织，要么依赖于父元素来计算尺寸和组织内容。
+当一个元素的hasLayout属性值为true时，它负责对自己和可能的子孙元素进行尺寸计算和定位。
+*/
+.clear-fix {
+  zoom: 1;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
